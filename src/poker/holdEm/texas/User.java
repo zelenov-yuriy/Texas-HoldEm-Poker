@@ -21,7 +21,10 @@ public class User extends Player implements InterfaceUser {
         showYourChips(super.getChips());
         if (super.getBet() < currentBet) {
             if ((super.getBet() + super.getChips()) > currentBet) {
-                choice = foldCallRaise();
+                if ((super.getNext().getNext() == this) && super.getNext().getAllIn())
+                    choice = foldCall();
+                else
+                    choice = foldCallRaise();
                 switch (choice) {
                     case 'f' -> {
                         super.setFold(true);

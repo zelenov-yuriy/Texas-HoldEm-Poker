@@ -100,7 +100,7 @@ public abstract class Player implements PlayerResults {
     }
 
     public void setSmallBlind() {
-        if (chips < 10) {
+        if (chips <= 10) {
             bet = chips;
             chips = 0;
             allIn = true;
@@ -112,7 +112,7 @@ public abstract class Player implements PlayerResults {
     }
 
     public void setBigBlind() {
-        if (chips < 20) {
+        if (chips <= 20) {
             bet = chips;
             chips = 0;
             allIn = true;

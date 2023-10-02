@@ -181,6 +181,19 @@ public class Deal implements InterfaceDeal {
         pList.bigBlind.showBet();
 
         do {
+            if (pList.bigBlind.getNext() == pList.smallBlind) {
+                if (pList.smallBlind.getAllIn()) {
+                    raise = false;
+                    continue;
+                } else if (pList.bigBlind.getAllIn()) {
+                    if (pList.bigBlind.getBet() <= pList.smallBlind.getBet()) {
+                        raise = false;
+                        continue;
+                    } else {
+                        currentBet = pList.bigBlind.getBet();
+                    }
+                }
+            }
             if (!temp.getFold() && !temp.getAllIn()) {
                 tempBet = temp.makeBet(currentBet);
                 if (temp instanceof Bot)

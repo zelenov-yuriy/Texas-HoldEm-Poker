@@ -89,9 +89,11 @@ public class Combination {
         boolean result = false;
         for (int i = 0; i < 2; i++) {
             if (cards[i].getDeckNumber() / 4 == cards[i + 1].getDeckNumber() / 4) {
-                for (int j = i + 2; j < 4; j++)
+                for (int j = i + 2; j < 4; j++) {
                     if (cards[j].getDeckNumber() / 4 == cards[j + 1].getDeckNumber() / 4)
-                        result = true;
+                        if (cards[i].getDeckNumber() / 4 != cards[j].getDeckNumber() / 4)
+                            result = true;
+                }
             }
         }
         return result;
